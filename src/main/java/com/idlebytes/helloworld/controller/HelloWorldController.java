@@ -1,11 +1,14 @@
 package com.idlebytes.helloworld.controller;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@EnableAutoConfiguration
 public class HelloWorldController {
 	
 	String message = "Welcome to Spring MVC!";
@@ -26,5 +29,14 @@ public class HelloWorldController {
 		mv.addObject("blogname", blogname);
 		return mv;
 	}
+	
+	@RequestMapping("/")
+    String home() {
+        return "Hello World!";
+    }
+	
+	public static void main(String[] args) throws Exception {
+        SpringApplication.run(HelloWorldController.class, args);
+    }
 
 }
